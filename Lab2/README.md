@@ -25,3 +25,18 @@
 3.  Write a function to call GitHub API (https://api.github.com/users) and get users.
     *   Try to understand the functionality of Promises.
     *   Print all users to console.
+    *   Try to return fetched users and print it in the caller.
+    
+4.  Classes in Javascript
+    *   Create a class named Vehicle using a function.
+    *   Add property named type to the class (*this.type*). Assign a value to that variable using a constructor argument.
+    *   Add a function to its prototype named drive (*Vehicle.prototype.print...*). Print ‘Vehicle is driving’ in the function body.
+    Add VehicleCount (Vehicle.VehicleCount) as a static variable.
+    *   Increase the number of VehicleCount (*Vehicle.VehicleCount++*) by one inside the constructor.
+    *   Create an object from Vehicle class (*new Vehicle*) and check static  variable value, type property value  and function works.
+    *   Create a class named Car and extend the class Vehicle (Car.prototype = Object.create(Vehicle.prototype); Car.prototype.constructor = Car).
+    *   Add a new method called balanceWheels to Car and print ‘Wheels are balanced’ in the function body.
+    *   Call balanceWheels and drive methods using a car object and verify the functionality.
+    *   Check the static variable value and type variable value. Notice that they are not correct.
+    *   The reason for the above behavior is that we didn’t call the parent constructor from the child class. Do this by using the call method (in Car constructor function Vehicle.call(this, type); 
+    *   Re-validate the values.
