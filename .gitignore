@@ -1,0 +1,4 @@
+# ignore node_modules
+Lab3/.cache
+Lab3/node_modules
+Lab3/dist
