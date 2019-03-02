@@ -21,23 +21,14 @@ npm install react react-dom prop-types --save-dev
 <!DOCTYPE **html**>
 
 <**html ****lang=****"en"**>
-
-<**head**>
-
-<**meta ****charset=****"UTF-8"**>
-
-<**title**>React JS</**title**>
-
-</**head**>
-
-<**body**>
-
-<**div ****id=****"app"**></**div**>
-
-<**script ****src=****"main.jsx"**></**script**>
-
-</**body**>
-
+    <**head**>
+        <**meta ****charset=****"UTF-8"**>
+        <**title**>React JS</**title**>
+    </**head**>
+    <**body**>
+        <**div ****id=****"app"**></**div**>
+        <**script ****src=****"main.jsx"**></**script**>
+    </**body**>
 </**html**>
 
 1.  Create main application container file as AppContainer.jsx
@@ -47,23 +38,14 @@ npm install react react-dom prop-types --save-dev
 **import** React, {*Component*} **from** **'react'**;
 
 **export default class** AppContainer **extends** *Component* {
-
-constructor(props) {
-
-**super**(props);
-
-}
-
-render() {
-
-**return** <**div**>
-
-<**h2**>Hello World</**h2**>
-
-</**div**>;
-
-}
-
+    constructor(props) {
+        **super**(props);
+    }
+    render() {
+        **return** <**div**>
+            <**h2**>Hello World</**h2**>
+        </**div**>;
+    }
 }
 
 1.  Add new JSX file (main.jsx) as the entry point for the React application.
@@ -73,7 +55,6 @@ render() {
 **import** React **from** **'react'**;
 
 **import** {render} **from** **'react-dom'**;
-
 **import** AppContainer **from** **'./AppContainer.jsx'**;
 
 render(<**AppContainer**/>, ***document***.getElementById(**'app'**));
@@ -93,17 +74,11 @@ npm start
 **import** React **from** **'react'**;
 
 **const** *User* = props => {
-
-**const** {user} = props;
-
-**return** <**tr**>
-
-<**td**>{user.**id**}</**td**>
-
-<**td**>{user.**name**}</**td**>
-
-</**tr**>
-
+    **const** {user} = props;
+    **return** <**tr**>
+        <**td**>{user.**id**}</**td**>
+        <**td**>{user.**name**}</**td**>
+    </**tr**>
 };
 
 **export default** *User*;
@@ -113,69 +88,39 @@ npm start
 **'use strict'**;
 
 **import** React, {*Component*} **from** **'react'**;
-
 **import** PropTypes **from** **'prop-types'**;
 
 **import** *User* **from** **'./User.jsx'**;
 
 **export default class** Users **extends** *Component* {
-
-**static get** *propTypes*() {
-
-**return** {
-
-**users**: PropTypes.*array*
-
-}
-
-}
-
-constructor(props) {
-
-**super**(props);
-
-}
-
-render() {
-
-**const** {users} = **this**.**props**;
-
-**return** <**div**>
-
-<**table**>
-
-<**thead**>
-
-<**tr**>
-
-<**th**>ID</**th**>
-
-<**th**>Name</**th**>
-
-</**tr**>
-
-</**thead**>
-
-<**tbody**>
-
-{
-
-users.map(user => {
-
-**return** <**User ****key****=**{user.**id**}**user****=**{user}/>
-
-})
-
-}
-
-</**tbody**>
-
-</**table**>
-
-</**div**>;
-
-}
-
+    **static get** *propTypes*() {
+        **return** {
+            **users**: PropTypes.*array*
+        }
+    }
+    constructor(props) {
+        **super**(props);
+    }
+    render() {
+        **const** {users} = **this**.**props**;
+        **return** <**div**>
+            <**table**>
+                <**thead**>
+                    <**tr**>
+                        <**th**>ID</**th**>
+                        <**th**>Name</**th**>
+                    </**tr**>
+                </**thead**>
+            <**tbody**>
+                {
+                    users.map(user => {
+                        **return** <**User ****key****=**{user.**id**}**user****=**{user}/>
+                    })
+                }
+            </**tbody**>
+            </**table**>
+        </**div**>;
+    }
 }
 
 1.  Add Users component to AppContainer component.
@@ -187,37 +132,21 @@ users.map(user => {
 **import** Users **from** **'./Users'**;
 
 **export default class** AppContainer **extends** *Component* {
-
-constructor(props) {
-
-**super**(props);
-
-**this**.**state** = {
-
-**users**: [{
-
-**id**: ***Date***.now(),
-
-**name**: **'John'**
-
-}]
-
-}
-
-}
-
-render() {
-
-**return** <**div**>
-
-<**h2**>Users App</**h2**>
-
-<**Users ****users****=**{**this**.**state**.**users**}/>
-
-</**div**>;
-
-}
-
+    constructor(props) {
+        **super**(props);
+        **this**.**state** = {
+            **users**: [{
+                **id**: ***Date***.now(),
+                **name**: **'John'**
+            }]
+        }
+    }
+    render() {
+        **return** <**div**>
+            <**h2**>Users App</**h2**>
+            <**Users ****users****=**{**this**.**state**.**users**}/>
+        </**div**>;
+    }
 }
 
 1.  Create another component AddUser to add new users.
@@ -225,127 +154,71 @@ render() {
 **'use strict'**;
 
 **import** React, {*Component*} **from** **'react'**;
-
 **import** PropTypes **from** **"prop-types"**;
 
 **export default class** AddUser **extends** *Component* {
-
-**static get** *propTypes*() {
-
-**return** {
-
-**addUser**: PropTypes.*func*
-
-}
-
-}
-
-constructor(props) {
-
-**super**(props);
-
-}
-
-onNameChange(event) {
-
-event.preventDefault();
-
-event.stopPropagation();
-
-**this**.**name** = event.**target**.**value**;
-
-}
-
-onSubmit(event) {
-
-event.preventDefault();
-
-event.stopPropagation();
-
-**if** (**this**.**name**) {
-
-**this**.**props**.**addUser**({**name**: **this**.**name**});
-
-**this**.**name** = **''**;
-
-}
-
-}
-
-render() {
-
-**return** <**div**>
-
-<**form ****onSubmit****=**{event => **this**.onSubmit(event)}>
-
-<**label**>Name:</**label**>
-
-<**input ****type****="text" ****onChange****=**{event => **this**.onNameChange(event)}/>
-
-<**button ****type****="submit"**>Add</**button**>
-
-</**form**>
-
-</**div**>;
-
-}
-
+    **static get** *propTypes*() {
+        **return** {
+            **addUser**: PropTypes.*func*
+        }
+    }
+    constructor(props) {
+        **super**(props);
+    }
+    onNameChange(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        **this**.**name** = event.**target**.**value**;
+    }
+    onSubmit(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        **if** (**this**.**name**) {
+            **this**.**props**.**addUser**({**name**: **this**.**name**});
+            **this**.**name** = **''**;
+        }
+    }
+    render() {
+        **return** <**div**>
+            <**form ****onSubmit****=**{event => **this**.onSubmit(event)}>
+                <**label**>Name:</**label**>
+                <**input ****type****="text" ****onChange****=**{event => **this**.onNameChange(event)}/>
+                <**button ****type****="submit"**>Add</**button**>
+            </**form**>
+        </**div**>;
+    }
 }
 
 1.  Update AppContainer component to cater user adding.
 
 **'use strict'**;
-
 **import** React, {*Component*} **from** **'react'**;
 
 **import** AddUser **from** **'./AddUser'**;
-
 **import** Users **from** **'./Users'**;
 
 **export default class** AppContainer **extends** *Component* {
-
-constructor(props) {
-
-**super**(props);
-
-**this**.**state** = {
-
-**users**: [{
-
-**id**: ***Date***.now(),
-
-**name**: **'John'**
-
-}]
-
-}
-
-}
-
-addUser(user) {
-
-**this**.setState(state=> ({
-
-**users**: **state**.**users**.concat({**id**: ***Date***.now(), **name**: user.**name**})
-
-}))
-
-}
-
-render() {
-
-**return** <**div**>
-
-<**h2**>Users App</**h2**>
-
-<**AddUser ****addUser****=**{user => **this**.addUser(user)}/>
-
-<**Users ****users****=**{**this**.**state**.**users**}/>
-
-</**div**>;
-
-}
-
+    constructor(props) {
+        **super**(props);
+        **this**.**state** = {
+            **users**: [{
+                **id**: ***Date***.now(),
+                **name**: **'John'**
+            }]
+        }
+    }
+    addUser(user) {
+        **this**.setState(state=> ({
+            **users**: **state**.**users**.concat({**id**: ***Date***.now(), **name**: user.**name**})
+        }))
+    }
+    render() {
+        **return** <**div**>
+            <**h2**>Users App</**h2**>
+            <**AddUser ****addUser****=**{user => **this**.addUser(user)}/>
+            <**Users ****users****=**{**this**.**state**.**users**}/>
+        </**div**>;
+    }
 }
 
 1.  Run the application can check the output.
